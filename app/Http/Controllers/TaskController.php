@@ -33,13 +33,8 @@ class TaskController extends Controller
             'done' => $request->boolean('done')
         ];
 
-        session()->push('tasks', $task);
+        session()->push('tasks', $taskData);
         return redirect()->route('tasks.index')->with('success', 'Task created!');
-
-        // Redirect to the index route with a flash message
-        return redirect()
-            ->route('tasks.index')
-            ->with('success', 'Task created successfully!');
     }
 
     public function show(string $id)
@@ -54,10 +49,10 @@ class TaskController extends Controller
 
         $task = collect($tasks)->firstWhere('id', $id);
 
-        return view('tasks.edit', ['task' => $task]);
         if(!$task) {
             return redirect()->route('tasks.index')->with('error', 'Task not found');
         }
+        return view('tasks.edit', ['task' => $task]);
     }
 
 
