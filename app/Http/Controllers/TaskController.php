@@ -79,6 +79,11 @@ class TaskController extends Controller
 
     public function destroy(string $id)
     {
+        $tasks = session('tasks', []);
+        $tasks = array_filter($tasks, fn($t) => $t['id'] !=$id);
+        $tasks = array_values($tasks);
+        session(['tasks' => $tasks]);
         
+        return redirect()->route('tasks.index')->with('success', 'Task deleted!');
     }
 }
