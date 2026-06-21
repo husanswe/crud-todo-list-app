@@ -18,7 +18,7 @@ class TaskController extends Controller
 
     public function store(Request $request)
     {
-        $request->session()->put();
+        $request->session();
     }
 
     public function show(string $id)
