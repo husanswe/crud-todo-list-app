@@ -36,7 +36,7 @@ class TaskController extends Controller
 
         // Redirect to the index route with a flash message
         return redirect()
-            ->route('posts.index')
+            ->route('tasks.index')
             ->with('success', 'Post created successfully!');
     }
 
