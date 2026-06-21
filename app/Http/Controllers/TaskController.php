@@ -18,6 +18,7 @@ class TaskController extends Controller
         return view('tasks.create');
     }
 
+
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -32,18 +33,20 @@ class TaskController extends Controller
             'done' => $request->boolean('done')
         ];
 
-        Session::push('tasks', $request->input('task'));
+        session()->push('tasks', $task);
+        return redirect()->route('tasks.index')->with('success', 'Task created!');
 
         // Redirect to the index route with a flash message
         return redirect()
             ->route('tasks.index')
-            ->with('success', 'Post created successfully!');
+            ->with('success', 'Task created successfully!');
     }
 
     public function show(string $id)
     {
         //
     }
+
 
     public function edit(string $id)
     {
@@ -56,6 +59,7 @@ class TaskController extends Controller
             return redirect()->route('tasks.index')->with('error', 'Task not found');
         }
     }
+
 
     public function update(Request $request, string $id)
     {
@@ -76,6 +80,7 @@ class TaskController extends Controller
 
         return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
+
 
     public function destroy(string $id)
     {
