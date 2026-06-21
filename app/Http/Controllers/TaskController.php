@@ -59,11 +59,26 @@ class TaskController extends Controller
 
     public function update(Request $request, string $id)
     {
-        
+        $validated = $request->validate([
+            'title' => 'required|string|max:30'
+        ]);
+
+        $tasks = session('tasks', []);
+
+        foreach ($tasks as $i => $t) {
+            if ($t['id'] == $id) {
+                $tasks[$i]['title'] = $request->input('title');
+                $tasks[$i]['done'] = $request->boolean('done');
+                break;
+            }
+        }
+        session(['tasks' => $tasks]);
+
+        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
     }
 
     public function destroy(string $id)
     {
-        //
+        
     }
 }
