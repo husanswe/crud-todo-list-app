@@ -6,6 +6,7 @@
     </head>
 
     <body class="bg-gray-100 min-h-screen">
+
         <div class="max-w-2xl mx-auto py-10 px-4">
             <h1 class="text-3xl font-bold text-gray-800 mb-6">New Task</h1>
 
@@ -30,5 +31,7 @@
                 </div>
             </form>
         </div>
+        
     </body>
+
 </html>
