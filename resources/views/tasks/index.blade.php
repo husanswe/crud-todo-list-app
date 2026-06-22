@@ -26,15 +26,15 @@
                 @forelse($tasks as $task)
                     <div class="flex items-center justify-between p-4">
                         <div class="flex items-center gap-3">
-                            <span class="w-3 h-3 rounded-full {{ $task['done'] ? 'bg-green-500' : 'bg-gray-300' }}"></span>
-                            <span class="{{ $task['done'] ? 'line-through text-gray-400' : 'text-gray-800' }}">
-                                {{ $task['title'] }}
+                            <span class="w-3 h-3 rounded-full {{ $task->done ? 'bg-green-500' : 'bg-gray-300' }}"></span>
+                            <span class="{{ $task->done ? 'line-through text-gray-400' : 'text-gray-800' }}">
+                                {{ $task->title }}
                             </span>
                         </div>
                         <div class="flex gap-2">
-                            <a href="{{ route('tasks.edit', $task['id']) }}"
+                            <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
                             class="text-blue-600 hover:underline text-sm">Edit</a>
-                            <form action="{{ route('tasks.destroy', $task['id']) }}" method="POST" class="inline">
+                            <form action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
                                 <button class="text-red-600 hover:underline text-sm">Delete</button>

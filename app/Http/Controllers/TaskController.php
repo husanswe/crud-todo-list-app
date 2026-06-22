@@ -41,44 +41,28 @@ class TaskController extends Controller
 
     public function edit(string $id)
     {
-        $tasks = session('tasks', []);
+        $task = Task::findOrFail($id);
 
-        $task = collect($tasks)->firstWhere('id', $id);
-
-        if(!$task) {
-            return redirect()->route('tasks.index')->with('error', 'Task not found');
-        }
         return view('tasks.edit', ['task' => $task]);
     }
 
 
     public function update(Request $request, string $id)
     {
-        $validated = $request->validate([
-            'title' => 'required|string|max:30'
+        $validated = $request->validate(['title' => 'required|string|max:30']);
+        $task = Task::findOrFail($id);
+        $task->update([
+            'title' => $validated['title'],
+            'done' => $request->boolean('done'),
         ]);
 
-        $tasks = session('tasks', []);
-
-        foreach ($tasks as $i => $t) {
-            if ($t['id'] == $id) {
-                $tasks[$i]['title'] = $request->input('title');
-                $tasks[$i]['done'] = $request->boolean('done');
-                break;
-            }
-        }
-        session(['tasks' => $tasks]);
-
-        return redirect()->route('tasks.index')->with('success', 'Task updated successfully!');
+        return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }
 
 
     public function destroy(string $id)
     {
-        $tasks = session('tasks', []);
-        $tasks = array_filter($tasks, fn($t) => $t['id'] !=$id);
-        $tasks = array_values($tasks);
-        session(['tasks' => $tasks]);
+        Task::findOrFail($id)->delete();
         
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
     }
