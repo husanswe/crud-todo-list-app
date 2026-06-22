@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Tasks</title>
+        <title>TO-DO List App</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
