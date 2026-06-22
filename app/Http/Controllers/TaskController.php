@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Models\Task;
 
 class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = session('tasks', []);
+        $tasks = Task::all();
         return view('tasks.index', ['tasks' => $tasks]);
     }
 
@@ -25,15 +26,10 @@ class TaskController extends Controller
             'title' => 'required|string|max:30'
         ]);
 
-        $tasks = session('tasks', []);
-
-        $taskData = [
-            'id' => time(),
+        Task::create([
             'title' => $validated['title'],
-            'done' => $request->boolean('done')
-        ];
-
-        session()->push('tasks', $taskData);
+            'done'  => $request->boolean('done'),
+        ]);
         return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
 
