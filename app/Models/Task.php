@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Builder;
 
 class Task extends Model
 {
@@ -13,7 +14,7 @@ class Task extends Model
 
     protected $casts = ['done' => 'boolean'];
 
-    public function scopeCompleted($query)
+    public function scopeCompleted(Builder $query)
     {
         return $query->where('done', true);
     }
