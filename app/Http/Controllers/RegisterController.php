@@ -6,17 +6,19 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
-    public function show(Request $request) {
+    public function show() {
+        return view('register-form');
+    }
+
+    public function register(Request $request) {
         $validated = $request->validate([
-            'name' => "required|string|min:3|max:50",
+            'name' => "required|string|max:50",
             'email'=> "required|email|unique:users,email",
-            'age' => "required|integer|min:18|max:99",
+            'age' => "required|integer|min:12",
             'password' => "required|string|min:8|confirmed",
             'website' => "nullable|url"
         ]);
-    }
 
-    public function register() {
-
+        dd($validated);
     }
 }
