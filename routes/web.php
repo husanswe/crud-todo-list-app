@@ -28,6 +28,6 @@ Route::get('/test-transaction', function() {
             'name' => 'Lorem ipsum',
         ]);
     });
-
+    
     return "Transaction completed";
 });
