@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
+use App\Http\Controllers\RegisterController;
 use Laravel\Prompts\Task;
 use Illuminate\Support\Facades\DB;
 
@@ -31,3 +32,6 @@ Route::get('/test-transaction', function() {
     
     return "Transaction completed";
 });
+
+Route::get('/register-form', [RegisterController::class, 'show']);
+Route::post('/register-form', [RegisterController::class, 'register']);
