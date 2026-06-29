@@ -43,13 +43,38 @@
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{ old('name') }}">
                 @error('name') 
-                    <p style="color:red">{{ $message }}</p>
+                    <p style="color:red;">{{ $message }}</p>
                 @enderror
 
                 <label for="email">Email</label>
                 <input type="text" name="email" value="{{ old('email') }}">
-                
+                @error('email')
+                    <p style="color: red;">{{ $message }}</p>                    
+                @enderror
 
+                <label for="age">Age</label>
+                <input type="text" name="age" value="{{ old('age') }}">
+                @error('age')
+                    <p style="color: red;">{{ $message }}</p>                    
+                @enderror
+
+                <label for="password">Password</label>
+                <input type="text" name="password" value="{{ old('password') }}">
+                @error('password')
+                    <p style="color: red;">{{ $message }}</p>                    
+                @enderror
+
+                <label for="password_confirmation">Confirm Your Password</label>
+                <input type="text" name="password" value="{{ old('password') }}">
+                @error('password')
+                    <p style="color: red;">{{ $message }}</p>                    
+                @enderror
+
+                <label for="website">website</label>
+                <input type="url" name="url" value="{{ old('url') }}">
+                @error('website')
+                    <p style="color: red;">{{ $message }}</p>                    
+                @enderror
 
                 <button type="submit">Submit</button>
             </form>
