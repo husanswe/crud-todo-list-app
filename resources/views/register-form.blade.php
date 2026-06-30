@@ -52,7 +52,7 @@
         <h1>Validation Lesson Tasks — 5 tasks. Task 1 — Form with 5 validation rules</h1>
 
         <div class="container">
-            <form action="/register-form" method="POST">
+            <form action="/register-form" method="POST" autocomplete="off">
                 @csrf
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{ old('name') }}">
@@ -67,25 +67,25 @@
                 @enderror
 
                 <label for="age">Age</label>
-                <input type="text" name="age" value="{{ old('age') }}">
+                <input type="number" name="age" value="{{ old('age') }}">
                 @error('age')
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
 
                 <label for="password">Password</label>
-                <input type="text" name="password" value="{{ old('password') }}">
+                <input type="password" name="password" value="{{ old('password') }}" autocomplete="new-password">
                 @error('password')
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
 
                 <label for="password_confirmation">Confirm Your Password</label>
-                <input type="text" name="password" value="{{ old('password') }}">
-                @error('password')
+                <input type="password" name="password_confirmation" value="{{ old('password') }}">
+                @error('password_confirmation')
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
 
                 <label for="website">Website</label>
-                <input type="url" name="url" value="{{ old('url') }}">
+                <input type="url" name="website" value="{{ old('website') }}">
                 @error('website')
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
