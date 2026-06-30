@@ -8,15 +8,22 @@
         <title>Register Form</title>
 
         <style>
+            * {
+                box-sizing: border-box;
+            }
+
             form {
-                max-width: 400px;
+                width: 100%;
+                max-width: 500px;
                 display: flex;
                 flex-direction: column;
                 gap: 5px;
                 padding: 20px;
             }
             input, button {
+                width: 100%;
                 padding: 8px;
+                border-radius: 10px;
             }
             .error {
                 color: red;
@@ -25,11 +32,18 @@
 
             button {
                 background: rgb(53, 194, 53);
+                margin-top: 15px;
+                cursor: pointer;
+                border: none;
+                color: white;
+                font-weight: bold;
+                padding-block: 15px;
             }
 
             .container {
                 display: grid; 
                 place-items: center;
+                padding: 0 16px;
             }
         </style>
     </head>
@@ -70,7 +84,7 @@
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
 
-                <label for="website">website</label>
+                <label for="website">Website</label>
                 <input type="url" name="url" value="{{ old('url') }}">
                 @error('website')
                     <p style="color: red;">{{ $message }}</p>                    
