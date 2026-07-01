@@ -84,11 +84,24 @@
                     <p style="color: red;">{{ $message }}</p>                    
                 @enderror
 
-                <label for="website">Website</label>
-                <input type="url" name="website" value="{{ old('website') }}">
-                @error('website')
-                    <p style="color: red;">{{ $message }}</p>                    
+                <label for="role">Role</label>
+                <select name="role">
+                    <option value="admin" @selected(old('role') === 'admin')>Admin</option>
+                    <option value="editor" @selected(old('role') === 'editor')>Editor</option>
+                    <option value="user" @selected(old('role') === 'user')>User</option>
+                </select>
+                @error('role') 
+                    <p class="error">{{ $message }}</p>
                 @enderror
+
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" value="{{ old('phone') }}">
+                @error('phone') 
+                    <p class="error">{{ $message }}</p>
+                @enderror
+
+                <label for="bio"></label>
+                <textarea name="bio" cols="30" rows="10">{{ old('bio') }}</textarea>
 
                 <button type="submit">Submit</button>
             </form>

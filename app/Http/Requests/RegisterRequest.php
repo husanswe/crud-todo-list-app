@@ -21,7 +21,9 @@ class RegisterRequest extends FormRequest
             'email'=> "required|email|unique:users,email",
             'age' => "required|integer|min:12|max:100",
             'password' => "required|string|min:8|confirmed",
-            'website' => "nullable|url"
+            'role' => 'required|in:admin, editor, user',
+            'phone' => 'required_if:role,admin',
+            'bio' => 'nullable|string|max:100|regex:/^[a-zA-Z0-9 .,!?]+$/'
         ];
     }
 
@@ -33,7 +35,10 @@ class RegisterRequest extends FormRequest
             'email.email' => "That email doesn't look valid.",
             'email.unique' => "That email has been already registered. Try logging in instead.",
             'age.min' => 'You must be 12 or older to register',
-            'password.confirmed' => "Passwords don't match. Try again!"
+            'password.confirmed' => "Passwords don't match. Try again!",
+            'role.in' => 'Please choose a valid role.',
+            'phone.required_if' => 'Phone is required for admin accounts.',
+            'bio.regex' => 'Bio contains invalid characters.',
         ];
     }
 }
