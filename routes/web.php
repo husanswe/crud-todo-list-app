@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UploadController;
+
 use Laravel\Prompts\Task;
 use Illuminate\Support\Facades\DB;
 
@@ -35,3 +37,6 @@ Route::get('/test-transaction', function() {
 
 Route::get('/register-form', [RegisterController::class, 'show']);
 Route::post('/register-form', [RegisterController::class, 'register']);
+
+Route::get('/upload', [UploadController::class, 'show']);
+Route::post('/upload', [UploadController::class, 'store']);
