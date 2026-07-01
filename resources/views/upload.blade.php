@@ -9,10 +9,10 @@
             <p style="color: red"> {{ $message }} </p>
         @enderror
     
-        @if(session('path'))
-            <img src="{{ asset('/storage' . session('path')) }}" width="300" alt="">
-        @endif
-
         <button type="submit">Submit</button>
     </form>
+    
+    @if(session('path'))
+        <img src="{{ asset('/storage' . session('path')) }}" width="300" alt="image">
+    @endif
 </div>
