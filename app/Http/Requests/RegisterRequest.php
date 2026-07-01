@@ -15,13 +15,13 @@ class RegisterRequest extends FormRequest
     // @return array<string, ValidationRule|array<mixed>|string>
 
     public function rules(): array
-    {
+    {   
         return [
             'name' => "required|string|min:3|max:50",
             'email'=> "required|email|unique:users,email",
             'age' => "required|integer|min:12|max:100",
             'password' => "required|string|min:8|confirmed",
-            'role' => 'required|in:admin, editor, user',
+            'role' => 'required|in:admin,editor,user',
             'phone' => 'required_if:role,admin',
             'bio' => 'nullable|string|max:100|regex:/^[a-zA-Z0-9 .,!?]+$/'
         ];

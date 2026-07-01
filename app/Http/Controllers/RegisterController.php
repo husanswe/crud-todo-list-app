@@ -11,7 +11,7 @@ class RegisterController extends Controller
         return view('register-form');
     }
 
-    public function register(RegisterRequest $request) 
+    public function register(Request $request) 
     {
         $validated = $request->validated();
 
