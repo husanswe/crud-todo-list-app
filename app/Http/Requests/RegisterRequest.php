@@ -26,8 +26,8 @@ class RegisterRequest extends FormRequest
     }
 
     public function messages() 
-    {
-        [
+    {   
+        return [
             'name.required' => 'Please tell us your name.',
             'name.min' => 'Name is too short - at least 3 characters.',
             'email.email' => "That email doesn't look valid.",
