@@ -11,8 +11,8 @@
     
         <button type="submit">Submit</button>
     </form>
-    
+
     @if(session('path'))
-        <img src="{{ asset('/storage' . session('path')) }}" width="300" alt="image">
+        <img src="{{ asset('storage/' . session('path')) }}" width="500" alt="image">
     @endif
 </div>
