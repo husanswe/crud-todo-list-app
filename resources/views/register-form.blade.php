@@ -100,7 +100,7 @@
                     <p class="error">{{ $message }}</p>
                 @enderror
 
-                <label for="bio"></label>
+                <label for="bio">Bio</label>
                 <textarea name="bio" cols="30" rows="10">{{ old('bio') }}</textarea>
 
                 <button type="submit">Submit</button>
