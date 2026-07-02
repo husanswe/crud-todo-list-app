@@ -40,3 +40,6 @@ Route::post('/register-form', [RegisterController::class, 'register']);
 
 Route::get('/upload', [UploadController::class, 'show']);
 Route::post('/upload', [UploadController::class, 'store']);
+
+Route::get('/gallery', [UploadController::class, 'gallery']);
+Route::get('/gallery', [UploadController::class, 'storeMultiple']);

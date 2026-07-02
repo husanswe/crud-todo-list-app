@@ -21,4 +21,14 @@ class UploadController extends Controller
 
         return back()->with('path', $path);
     } 
+
+    public function gallery() 
+    {
+        return view('gallery');
+    }
+
+    public function storeMultiple()
+    {
+        
+    }
 }
