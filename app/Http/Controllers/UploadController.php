@@ -24,9 +24,9 @@ class UploadController extends Controller
     } 
 
     public function gallery() 
-    {
+    {   
         $images = UploadedImage::latest()->get();
-        return view('gallery', ['images' => $image]);
+        return view('gallery', ['images' => $images]);
     }
 
     public function storeMultiple(Request $request)
