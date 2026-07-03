@@ -10,7 +10,7 @@
     <body>
         <h1>Task 2 — Multiple file upload + list them</h1>
 
-        <form action="/gallery" method="POST">
+        <form action="/gallery" method="POST" enctype="multipart/form-data">
             @csrf
             <input type="file" name="images[]" multiple>
             @error('images')
@@ -23,10 +23,10 @@
         </form>
 
         <div style="display: grid;
-                    grid-template-columns: repeat(3, 1fr); 
+                    grid-template-columns: repeat(4, 1fr); 
                     gap: 10px; margin-top: 20px;">
             @foreach ($images as $image)
-                <img src="{{ asset('storage/' . $image->$path) }}" style="width: 100%;" alt="image uploaded by user">
+                <img src="{{ asset('storage/' . $image->path) }}" style="width: 100%;" alt="image uploaded by user">
             @endforeach
         </div>
     </body>
