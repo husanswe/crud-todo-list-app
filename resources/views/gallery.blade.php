@@ -17,8 +17,17 @@
                 <p style="color: red">{{ $message }}</p>
             @enderror
             @error('images.*')
-                
+                <p style="color: red">{{ $message }}</p>
             @enderror
+            <button>Upload</button>
         </form>
+
+        <div style="display: grid;
+                    grid-template-columns: repeat(3, 1fr); 
+                    gap: 10px; margin-top: 20px;">
+            @foreach ($paths as $path)
+                <img src="{{ asset('storage/' . $path) }}" style="width: 100%;" alt="image uploaded by user">
+            @endforeach
+        </div>
     </body>
 </html>
