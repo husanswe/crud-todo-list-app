@@ -42,4 +42,4 @@ Route::get('/upload', [UploadController::class, 'show']);
 Route::post('/upload', [UploadController::class, 'store']);
 
 Route::get('/gallery', [UploadController::class, 'gallery']);
-Route::get('/gallery', [UploadController::class, 'storeMultiple']);
+Route::post('/gallery', [UploadController::class, 'storeMultiple']);

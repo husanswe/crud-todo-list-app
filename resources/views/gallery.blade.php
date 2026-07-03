@@ -8,6 +8,17 @@
     </head>
 
     <body>
-        <h1></h1>
+        <h1>Task 2 — Multiple file upload + list them</h1>
+
+        <form action="/gallery" method="POST">
+            @csrf
+            <input type="file" name="images[]" multiple>
+            @error('images')
+                <p style="color: red">{{ $message }}</p>
+            @enderror
+            @error('images.*')
+                
+            @enderror
+        </form>
     </body>
 </html>
