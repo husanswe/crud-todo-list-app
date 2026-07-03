@@ -25,8 +25,8 @@
         <div style="display: grid;
                     grid-template-columns: repeat(3, 1fr); 
                     gap: 10px; margin-top: 20px;">
-            @foreach ($paths as $path)
-                <img src="{{ asset('storage/' . $path) }}" style="width: 100%;" alt="image uploaded by user">
+            @foreach ($images as $image)
+                <img src="{{ asset('storage/' . $image->$path) }}" style="width: 100%;" alt="image uploaded by user">
             @endforeach
         </div>
     </body>
