@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>File Listing task 3</title>
+        <title>Working w/ Files</title>
 
         <style>
             .success {
@@ -27,6 +27,16 @@
                 cursor: pointer;
                 color: red;
             }
+
+            .download-btn {
+                display: inline-block;
+                padding: 6px 16px;
+                background: rgb(53, 194, 53);
+                color: white;
+                text-decoration: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
         </style>
     </head>
 
@@ -41,10 +51,7 @@
             <div class="file-row">
                 <span class="file-name">{{ basename($file) }}</span>
 
-            <button>
-                <a href="/files/download" class="download-link">Download</a>
-            </button>
-                
+                <a href="/files/download/{{ basename($file) }}" class="download-btn">Download</a>
             </div>
 
             <form action="/files/{{ basename($file) }}" method="POST">
