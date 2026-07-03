@@ -41,9 +41,10 @@
             <div class="file-row">
                 <span class="file-name">{{ basename($file) }}</span>
 
-                <button>
-                    <a href="/files/download" class="download-link">Download</a>
-                </button>
+            <button>
+                <a href="/files/download" class="download-link">Download</a>
+            </button>
+                
             </div>
 
             <form action="/files/{{ basename($file) }}" method="POST">

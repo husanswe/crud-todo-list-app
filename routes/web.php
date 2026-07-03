@@ -48,5 +48,5 @@ Route::post('/gallery', [UploadController::class, 'storeMultiple']);
 
 // Task 3
 Route::get('/files', [UploadController::class, 'listFiles']);
-Route::get('/files/downlaod/{filename}', [UploadController::class, 'download']);
+Route::post('/files/downlaod/{filename}', [UploadController::class, 'download']);
 Route::delete('/files/{filename}', [UploadController::class, 'delete']);
