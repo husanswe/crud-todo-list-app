@@ -51,4 +51,25 @@ class UploadController extends Controller
         $files = Storage::disk('public')->files('uploads');
         return view('files', ['files' => $files]);
     }
+
+    public function downlaod($filename)
+    {
+        if (!Storage::disk('public')->exists($path)) {
+            return back()->with('error', 'File not found');
+        }
+
+        $path = 'uploads/' . $filename;
+        return Storage::disk('public')->download($path);
+    }
+
+    public function delete($filename)
+    {
+        if (!Storage::disk('public')->exists($path)) {
+            return back()->with('error', 'File not found');
+        }
+
+        $path = 'uploads/' . $filename;
+        Storage::disk('public')->delete($path);
+        return back()->with('success', 'File deleted!');
+    }
 }
