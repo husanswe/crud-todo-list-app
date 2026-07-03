@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UploadedImage;
+use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
@@ -43,5 +44,11 @@ class UploadController extends Controller
         }
 
         return redirect('/gallery');
+    }
+
+    public function listFiles()
+    {
+        $files = Storage::disk('public')->files('uploads');
+        return view('files', ['files' => $files]);
     }
 }

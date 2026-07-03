@@ -38,8 +38,15 @@ Route::get('/test-transaction', function() {
 Route::get('/register-form', [RegisterController::class, 'show']);
 Route::post('/register-form', [RegisterController::class, 'register']);
 
+// File upload and working w/ files lesson. Task 1
 Route::get('/upload', [UploadController::class, 'show']);
 Route::post('/upload', [UploadController::class, 'store']);
 
+// Task 2
 Route::get('/gallery', [UploadController::class, 'gallery']);
 Route::post('/gallery', [UploadController::class, 'storeMultiple']);
+
+// Task 3
+Route::get('/files', [UploadController::class, 'listFiles']);
+Route::get('/files/downlaod/{filename}', [UploadController::class, 'download']);
+Route::delete('/files/{filename}', [UploadController::class, 'delete']);
