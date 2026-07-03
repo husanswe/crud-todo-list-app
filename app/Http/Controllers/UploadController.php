@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\UploadedImage;
 
 class UploadController extends Controller
 {
@@ -24,11 +25,23 @@ class UploadController extends Controller
 
     public function gallery() 
     {
-        return view('gallery');
+        $images = UploadedImage::latest()->get();
+        return view('gallery', ['images' => $image]);
     }
 
-    public function storeMultiple()
+    public function storeMultiple(Request $request)
     {
-        
+        $request->validate([
+            'images' => 'required|array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,webp|max:2048',
+        ]);
+
+        foreach ($request->file('images') as $file) 
+        {
+            $path = $file->store('uploads', 'public');
+            UploadedImage::create(['path' => $path]);
+        }
+
+        return redirect('/gallery');
     }
 }
