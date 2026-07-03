@@ -4,11 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>Document</title>
+        <title>File Uplaod</title>
+
+        <style>
+            form {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+                margin-bottom: 20px;
+            }
+            button {
+                padding: 8px 20px;
+                cursor: pointer;
+            }
+        </style>
     </head>
 
     <body>
-        <h1>Task 2 — Multiple file upload + list them</h1>
+        <h1 style="text-align: center">Task 2 — Multiple file upload + list them</h1>
 
         <form action="/gallery" method="POST" enctype="multipart/form-data">
             @csrf
