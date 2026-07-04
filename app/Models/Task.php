@@ -19,4 +19,9 @@ class Task extends Model
     {
         return $query->where('done', true);
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
