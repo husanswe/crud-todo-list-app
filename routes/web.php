@@ -5,7 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UploadController;
 
-use Laravel\Prompts\Task;
+use App\Models\Task;
 use Illuminate\Support\Facades\DB;
 
 Route::get('/', function () {
@@ -50,3 +50,17 @@ Route::post('/gallery', [UploadController::class, 'storeMultiple']);
 Route::get('/files', [UploadController::class, 'listFiles']);
 Route::get('/files/download/{filename}', [UploadController::class, 'download']);
 Route::delete('/files/{filename}', [UploadController::class, 'delete']);
+
+
+// Eloquent Relationships lesson. Task 2
+Route::get('/n-plus-1-demo', function()
+{ 
+    DB::enableQueryLog();
+
+    $tasks = Task::with('category')->get();
+    foreach ($tasks as $task) {
+        echo $task->title . ' - ' . ($task->category?->name ?? 'none') . '<br>';
+    }
+
+    // dd(DB::getQueryLog());
+});
