@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Http\Request;
+use App\Models\Category;
 use App\Models\Task;
+use App\Models\Tag;
 
 class TaskController extends Controller
 {
@@ -16,7 +18,10 @@ class TaskController extends Controller
 
     public function create()
     {
-        return view('tasks.create');
+        return view('tasks.create', [
+            'categories' => Category::all(),
+            'tags' => Tag::all(),
+        ]);
     }
 
 
@@ -39,11 +44,14 @@ class TaskController extends Controller
     }
 
 
-    public function edit(string $id)
+    public function edit(int $id)
     {
         $task = Task::findOrFail($id);
-
-        return view('tasks.edit', ['task' => $task]);
+        return view('tasks.edit', [
+            'task' => $task,
+            'categories' => Category::all(),
+            'tags' => Tag::all()
+        ]);
     }
 
 
