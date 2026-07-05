@@ -31,6 +31,13 @@
                                 {{ $task->title }}
                             </span>
                         </div>
+
+                        @foreach($task->tags as $tag)
+                            <span style="background:#3b82f6; color:white; ...">
+                                {{ $tag->name }}
+                            </span>
+                        @endforeach
+
                         <div class="flex gap-2">
                             <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
                             class="text-blue-600 hover:underline text-sm">Edit</a>

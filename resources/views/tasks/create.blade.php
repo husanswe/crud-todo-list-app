@@ -30,6 +30,14 @@
                     class="bg-gray-200 hover:bg-gray-300 px-4 py-2 rounded-lg">Cancel</a>
                 </div>
             </form>
+
+            @foreach($tags as $tag)
+                <label>
+                    <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                        {{ in_array($tag->id, old('tags', [])) ? 'checked' : '' }}>
+                    {{ $tag->name }}
+                </label>
+            @endforeach
         </div>
         
     </body>

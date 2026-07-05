@@ -32,6 +32,18 @@
                 </div>
             </form>
         </div>
+
+        @php
+            $currentTagIds = $task->tags->pluck('id')->toArray();
+        @endphp
+
+        @foreach($tags as $tag)
+            <label>
+                <input type="checkbox" name="tags[]" value="{{ $tag->id }}"
+                    {{ in_array($tag->id, old('tags', $currentTagIds)) ? 'checked' : '' }}>
+                {{ $tag->name }}
+            </label>
+        @endforeach
         
     </body>
 
