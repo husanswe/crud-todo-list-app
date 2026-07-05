@@ -31,10 +31,13 @@ class TaskController extends Controller
             'title' => 'required|string|max:200'
         ]);
 
-        Task::create([
+        $task = Task::create([
             'title' => $validated['title'],
             'done'  => $request->boolean('done'),
         ]);
+
+        $task->tags()->sync($request->input('tags', []));
+
         return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
 
@@ -59,10 +62,13 @@ class TaskController extends Controller
     {
         $validated = $request->validate(['title' => 'required|string|max:200']);
         $task = Task::findOrFail($id);
+        
         $task->update([
             'title' => $validated['title'],
             'done' => $request->boolean('done'),
         ]);
+
+        $task->tags()->sync($request->input('tags', []));
 
         return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }
