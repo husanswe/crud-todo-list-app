@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UploadController;
+use App\Http\Controllers\AuthController;
 
 use App\Models\Task;
 use Illuminate\Support\Facades\DB;
@@ -64,3 +65,11 @@ Route::get('/n-plus-1-demo', function()
 
     // dd(DB::getQueryLog());
 });
+
+
+// Authentication Lesson. Task 1
+Route::get('/register', [AuthController::class, 'showRegister']);
+Route::post('/register', [AuthController::class, 'register_store']);
+Route::get('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout']);
