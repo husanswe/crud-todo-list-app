@@ -105,7 +105,8 @@
                             </button>
 
                             <p class="text-center text-muted mb-0">
-                                Already have an account? <a href="/login" class="text-decoration-none">Login</a>
+                                Already have an account? 
+                                <a href="{{ route('login') }}" class="text-decoration-none">Login</a>
                             </p>
                         </form>
                     </div>
