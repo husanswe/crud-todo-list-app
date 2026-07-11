@@ -13,8 +13,8 @@
     @extends('layouts.app')
 
     @section('content')
-    <div class="container">
-        <h1>Categories</h1>
+    <div class="container mt-4">
+        <h1 class="mb-4">Categories</h1>
 
         @if(session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
