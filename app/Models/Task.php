@@ -9,12 +9,14 @@ use Illuminate\Support\Facades\DB;
 use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
+use App\Models\User;
+
 class Task extends Model
 {
     use SoftDeletes;
     use HasFactory;
 
-    protected $fillable = ['title', 'done', 'priority'];
+    protected $fillable = ['user_id', 'title', 'done', 'priority'];
 
     protected $casts = ['done' => 'boolean'];
 
@@ -31,5 +33,10 @@ class Task extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
