@@ -5,6 +5,7 @@ use App\Http\Controllers\TaskController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UploadController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
 
 use App\Models\Task;
 use Illuminate\Support\Facades\DB;
