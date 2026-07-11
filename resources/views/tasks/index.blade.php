@@ -2,6 +2,7 @@
 <html>
     <head>
         <title>TO-DO List App</title>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
 
@@ -21,6 +22,17 @@
                     {{ session('success') }}
                 </div>
             @endif
+            
+            <nav class="navbar navbar-dark bg-dark px-4 mb-3 rounded">
+                <span class="navbar-brand">
+                    {{ auth()->user()->name }}
+                </span>
+                
+                <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                    @csrf
+                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                </form>
+            </nav>
 
             <div class="bg-white rounded-lg shadow divide-y">
                 @forelse($tasks as $task)
