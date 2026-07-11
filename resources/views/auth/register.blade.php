@@ -51,7 +51,7 @@
                         <h2 class="text-center mb-4 fw-bold">Create Account</h2>
                         <p class="text-center text-muted mb-4">Sign up to start tracking your tasks</p>
 
-                        <form action="/register" method="POST">
+                        <form action="/register" method="POST" autocomplete="off">
                             @csrf
 
                             <div class="mb-3">
@@ -65,8 +65,8 @@
                             </div>
 
                             <div class="mb-3">
-                                <label class="form-label">Email</label>
-                                <input type="email" name="email" value="{{ old('email') }}"
+                                <label class="form-label">Email</label> 
+                                <input type="email" name="email" value="{{ old('email') }}" autocomplete="off"
                                        class="form-control @error('email') is-invalid @enderror"
                                        placeholder="you@example.com">
                                 @error('email')
@@ -77,7 +77,7 @@
                             <div class="mb-3">
                                 <label class="form-label">Password</label>
                                 <div class="input-group">
-                                    <input type="password" name="password" id="password"
+                                    <input type="password" name="password" id="password" autocomplete="new-password"
                                         class="form-control @error('password') is-invalid @enderror"
                                         placeholder="At least 8 characters">
                                     <button type="button" class="btn btn-outline-secondary" onclick="togglePassword('password', this)">
