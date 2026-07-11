@@ -23,16 +23,19 @@
                 </div>
             @endif
             
-            <nav class="navbar navbar-dark bg-dark px-4 mb-3 rounded">
-                <span class="navbar-brand">
-                    {{ auth()->user()->name }}
-                </span>
-                
-                <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
-                </form>
-            </nav>
+            @auth
+                <nav class="navbar navbar-dark bg-dark px-4 mb-3 rounded">
+                    <span class="navbar-brand">
+                        {{ auth()->user()->name }}
+                    </span>
+                    
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                    </form>
+                </nav>
+            @endauth
+            
 
             <div class="bg-white rounded-lg shadow divide-y">
                 @forelse($tasks as $task)
