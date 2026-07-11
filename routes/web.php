@@ -13,7 +13,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('tasks', TaskController::class);
+Route::resource('tasks', TaskController::class)->middleware('auth');
 
 /* Route::get('/test-raw', function() {
     $results = DB::select('SELECT * FROM tasks WHERE priority = ?', [2]);
