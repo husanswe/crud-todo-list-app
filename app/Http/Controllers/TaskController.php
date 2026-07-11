@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = auth()->user()->tasks()->with(['category', 'tags'])->get();
         return view('tasks.index', ['tasks' => $tasks]);
     }
 
@@ -34,6 +34,7 @@ class TaskController extends Controller
         $task = Task::create([
             'title' => $validated['title'],
             'done'  => $request->boolean('done'),
+            'user_id' => auth()->id(),
         ]);
 
         $task->tags()->sync($request->input('tags', []));
