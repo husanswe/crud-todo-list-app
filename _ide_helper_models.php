@@ -14,6 +14,48 @@
 namespace App\Models{
 /**
  * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $tasks
+ * @property-read int|null $tasks_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Category whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperCategory {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $tasks
+ * @property-read int|null $tasks_count
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag query()
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Tag whereUpdatedAt($value)
+ * @mixin \Eloquent
+ */
+	#[\AllowDynamicProperties]
+	class IdeHelperTag {}
+}
+
+namespace App\Models{
+/**
+ * @property int $id
  * @property string $title
  * @property bool $done
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -21,7 +63,13 @@ namespace App\Models{
  * @property int $priority
  * @property \Illuminate\Support\Carbon|null $deleted_at
  * @property int|null $category_id
+ * @property int|null $user_id
+ * @property-read \App\Models\Category|null $category
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Tag> $tags
+ * @property-read int|null $tags_count
+ * @property-read \App\Models\User|null $user
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task completed()
+ * @method static \Database\Factories\TaskFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task onlyTrashed()
@@ -34,10 +82,13 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task wherePriority($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|Task whereUserId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task withTrashed(bool $withTrashed = true)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|Task withoutTrashed()
+ * @mixin \Eloquent
  */
-	class Task extends \Eloquent {}
+	#[\AllowDynamicProperties]
+	class IdeHelperTask {}
 }
 
 namespace App\Models{
@@ -53,8 +104,10 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UploadedImage whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UploadedImage wherePath($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|UploadedImage whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class UploadedImage extends \Eloquent {}
+	#[\AllowDynamicProperties]
+	class IdeHelperUploadedImage {}
 }
 
 namespace App\Models{
@@ -64,12 +117,12 @@ namespace App\Models{
  * @property string $email
  * @property \Illuminate\Support\Carbon|null $email_verified_at
  * @property string $password
+ * @property bool $is_admin
  * @property string|null $remember_token
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
- * @property-read int|null $notifications_count
- * @method static \Database\Factories\UserFactory factory($count = null, $state = [])
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Task> $tasks
+ * @property-read int|null $tasks_count
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User query()
@@ -77,11 +130,14 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereEmailVerifiedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereIsAdmin($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder<static>|User whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
-	class User extends \Eloquent {}
+	#[\AllowDynamicProperties]
+	class IdeHelperUser {}
 }
 

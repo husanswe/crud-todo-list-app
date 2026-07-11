@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 use App\Models\User;
 
+/**
+ * @mixin IdeHelperTask
+ */
 class Task extends Model
 {
     use SoftDeletes;

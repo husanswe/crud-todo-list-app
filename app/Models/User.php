@@ -12,6 +12,9 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Models\Task;
 
+/**
+ * @mixin IdeHelperUser
+ */
 class User extends Authenticatable
 {
     protected $fillable = [
