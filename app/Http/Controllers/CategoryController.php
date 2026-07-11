@@ -19,21 +19,18 @@ class CategoryController extends Controller
 
     public function store() {
         Gate::authorize('manage-categories');
-        return view('categories.create_form');
     }
 
     public function edit() {
         Gate::authorize('manage-categories');
-        return view('categories.create_form');
+        return view('categories.edit_form');
     }
 
     public function update() {
         Gate::authorize('manage-categories');
-        return view('categories.create_form');
     }
 
     public function destroy() {
         Gate::authorize('manage-categories');
-        return view('categories.create_form');
     }
 }
