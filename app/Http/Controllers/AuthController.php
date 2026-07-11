@@ -14,12 +14,12 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-    public function register_store(Request $request)
+    public function register(Request $request)
     {
         $validated = $request->validate([
             'name' => 'required|string',
             'email'=> 'email|required|unique:users',
-            'passowrd'=>'required|string|min:8'
+            'password'=>'required|string|min:8'
         ]);
 
         $user = User::create([
