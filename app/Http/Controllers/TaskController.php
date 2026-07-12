@@ -28,7 +28,7 @@ class TaskController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'title' => 'required|string|max:200'
+            'title' => 'required|string|max:100'
         ]);
 
         $task = Task::create([

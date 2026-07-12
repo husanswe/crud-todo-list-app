@@ -17,8 +17,16 @@ class CategoryController extends Controller
         return view('categories.create_form');
     }
 
-    public function store() {
+    public function store(Request $request) {
+        $validated = $request->validate([
+            'name' => 'required|string|max:30|unique:categories,name'
+        ]);
+
         Gate::authorize('manage-categories');
+    }
+
+    public function show() {
+        
     }
 
     public function edit() {
@@ -26,7 +34,7 @@ class CategoryController extends Controller
         return view('categories.edit_form');
     }
 
-    public function update() {
+    public function update(Request $request) {
         Gate::authorize('manage-categories');
     }
 
