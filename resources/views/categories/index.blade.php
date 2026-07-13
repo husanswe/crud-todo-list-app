@@ -21,7 +21,7 @@
         @endif
 
         @can('manage-categories')
-            <a href="{{ route('categories.index') }}" class="btn btn-primary mb-3">Add Category</a>
+            <a href="{{ route('categories.create_form') }}" class="btn btn-primary mb-3">Add Category</a>
         @endcan
 
         <table class="table">
