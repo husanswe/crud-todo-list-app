@@ -26,7 +26,7 @@ class CategoryController extends Controller
 
         Category::create($validated);
 
-        return redirect()->route('categories.index')->with('success', 'CAtegory ccreated!');
+        return redirect()->route('categories.index')->with('success', 'Category created!');
     }
 
     public function show() {
@@ -38,7 +38,7 @@ class CategoryController extends Controller
 
         $category = Category::findOrFail($id);
 
-        return view('categories.edit_form');
+        return view('categories.edit_form', ['category' => $category]);
     }
 
     public function update(Request $request, string $id) {
@@ -52,11 +52,11 @@ class CategoryController extends Controller
         return redirect()->route('categories.index')->with('success', 'Category updated!');
     }
 
-    public function destroy() {
+    public function destroy(string $id) {
         Gate::authorize('manage-categories');
 
         Category::findOrFail($id)->delete();
 
-        return redirect()->route('categories.index')->with('success', 'CAtegory deleted!');
+        return redirect()->route('categories.index')->with('success', 'Category deleted!');
     }
 }
