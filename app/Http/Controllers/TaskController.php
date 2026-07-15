@@ -44,13 +44,16 @@ class TaskController extends Controller
 
     public function show(string $id)
     {
-        //
+        $this->authorize('view', $task);
     }
 
 
     public function edit(int $id)
     {
         $task = Task::findOrFail($id);
+
+        $this->authorize('update', $task);
+
         return view('tasks.edit', [
             'task' => $task,
             'categories' => Category::all(),
@@ -63,6 +66,8 @@ class TaskController extends Controller
     {
         $validated = $request->validate(['title' => 'required|string|max:200']);
         $task = Task::findOrFail($id);
+        
+        $this->authorize('view', $task);
         
         $task->update([
             'title' => $validated['title'],
@@ -77,6 +82,8 @@ class TaskController extends Controller
 
     public function destroy(string $id)
     {
+        $this->authorize('view', $task);
+
         Task::findOrFail($id)->delete();
         
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
