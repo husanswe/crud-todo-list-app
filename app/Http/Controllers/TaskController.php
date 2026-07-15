@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index()
     {
-        $tasks = auth()->user()->tasks()->with(['category', 'tags'])->get();
+        $tasks = Task::with(['category', 'tags'])->get();
         return view('tasks.index', ['tasks' => $tasks]);
     }
 

@@ -54,13 +54,17 @@
                         @endforeach
 
                         <div class="flex gap-2">
-                            <a href="{{ route('tasks.edit', ['task' => $task->id]) }}"
-                            class="text-blue-600 hover:underline text-sm">Edit</a>
-                            <form action="{{ route('tasks.destroy', ['task' => $task->id]) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button class="text-red-600 hover:underline text-sm">Delete</button>
-                            </form>
+                            @can('update', $task)
+                                <a href="{{ route('tasks.edit', $task->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                            @endcan
+
+                            @can('delete', $task)
+                                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display:inline">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Delete?')">Delete</button>
+                                </form>
+                            @endcan
                         </div>
                     </div>
                 @empty
