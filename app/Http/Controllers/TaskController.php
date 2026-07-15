@@ -44,6 +44,7 @@ class TaskController extends Controller
 
     public function show(string $id)
     {
+        $task = Task::findOrFail($id);
         $this->authorize('view', $task);
     }
 
@@ -68,7 +69,7 @@ class TaskController extends Controller
         $task = Task::findOrFail($id);
         
         $this->authorize('view', $task);
-        
+
         $task->update([
             'title' => $validated['title'],
             'done' => $request->boolean('done'),
