@@ -40,6 +40,8 @@ class TaskController extends Controller
         $task->tags()->sync($request->input('tags', []));
 
         return redirect()->route('tasks.index')->with('success', 'Task created!');
+
+        TaskCreated::dispatch($task);
     }
 
     public function show(string $id)
