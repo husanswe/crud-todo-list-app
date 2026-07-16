@@ -24,7 +24,8 @@ class LogTaskCreation
     {
         $event->task;
 
-        Log::info("message"),
-        [LogTaskCreation::class, 'handleTaskCreation']
+        Log::info("message");
+
+        [LogTaskCreation::class, 'handleTaskCreation'];
     }
 }

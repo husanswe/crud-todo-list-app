@@ -30,20 +30,20 @@ class TaskController extends Controller
         $validated = $request->validate([
             'title' => 'required|string|max:100'
         ]);
-
+        
         $task = Task::create([
             'title' => $validated['title'],
             'done'  => $request->boolean('done'),
             'user_id' => auth()->id(),
         ]);
-
+        
         $task->tags()->sync($request->input('tags', []));
-
+        
         return redirect()->route('tasks.index')->with('success', 'Task created!');
-
+        
         TaskCreated::dispatch($task);
     }
-
+    
     public function show(string $id)
     {
         $task = Task::findOrFail($id);
@@ -83,7 +83,7 @@ class TaskController extends Controller
     }
 
 
-    public function destroy(string $id)
+    public function destroy(string $id, string $task)
     {
         $this->authorize('view', $task);
 
