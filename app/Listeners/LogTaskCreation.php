@@ -22,10 +22,7 @@ class LogTaskCreation
      */
     public function handle(TaskCreated $event): void
     {
-        $event->task;
-
-        Log::info("message");
-
-        [LogTaskCreation::class, 'handleTaskCreation'];
+        Log::info("Task #{$event->task->id} '{$event->task->title}' 
+        created by user #{$event->task->user_id}");
     }
 }
