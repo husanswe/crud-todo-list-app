@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Task;
 use App\Models\Tag;
+use App\Events\TaskCreated;
 
 class TaskController extends Controller
 {
@@ -39,9 +40,9 @@ class TaskController extends Controller
         
         $task->tags()->sync($request->input('tags', []));
         
-        return redirect()->route('tasks.index')->with('success', 'Task created!');
-        
         TaskCreated::dispatch($task);
+
+        return redirect()->route('tasks.index')->with('success', 'Task created!');
     }
     
     public function show(string $id)
