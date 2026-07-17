@@ -2,8 +2,9 @@
 <html>
 <head>
     <title>TO-DO List App</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    @vite(['resources/js/app.js'])
 </head>
 
 <body class="bg-gray-100 min-h-screen">
@@ -79,7 +80,6 @@
     </script>
 
     <script type="module">
-        import './bootstrap.js';
 
         window.Echo.private(`user.${window.userId}`)
         .listen('.task.updated', (e) => {
@@ -105,6 +105,5 @@
             }
         });
     </script>
-
 </body>
 </html>
