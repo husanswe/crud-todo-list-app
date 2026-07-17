@@ -72,7 +72,7 @@ class TaskController extends Controller
         $validated = $request->validate(['title' => 'required|string|max:200']);
         $task = Task::findOrFail($id);
         
-        $this->authorize('view', $task);
+        $this->authorize('update', $task);
 
         $task->update([
             'title' => $validated['title'],
@@ -87,11 +87,10 @@ class TaskController extends Controller
     }
 
 
-    public function destroy(string $id, string $task)
+    public function destroy(Task $task)
     {
-        $this->authorize('view', $task);
-
-        Task::findOrFail($id)->delete();
+        $this->authorize('delete', $task);
+        $task->delete();
         
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
     }
