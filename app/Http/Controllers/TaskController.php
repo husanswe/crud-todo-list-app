@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Task;
 use App\Models\Tag;
 use App\Events\TaskCreated;
+use App\Events\TaskUpdated;
 
 class TaskController extends Controller
 {
@@ -80,6 +81,8 @@ class TaskController extends Controller
 
         $task->tags()->sync($request->input('tags', []));
 
+        TaskUpdated::dispatch($task);
+        
         return redirect()->route('tasks.index')->with('success', 'Task updated!');
     }
 
