@@ -29,11 +29,18 @@
                 <span class="navbar-brand">
                     {{ auth()->user()->name }}
                 </span>
-                
-                <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
-                </form>
+
+                <div class="d-flex align-items-center gap-2">
+                    @auth
+                        @if (auth()->user()->is_admin)
+                            <a href="{{ route('admin.dashboard') }}">Admin Panel</a>
+                        @endif
+                    @endauth
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                    </form>
+                </div>
             </nav>
         @endauth
         
