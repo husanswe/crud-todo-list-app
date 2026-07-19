@@ -81,3 +81,13 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Authorization lesson. Task 1
 Route::resource('categories', CategoryController::class);
+
+// Middleware lesson.
+Route::middleware(['auth', 'admin'])
+    ->prefix('admin')
+    ->group(function () {
+    
+        Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+        Route::get('users', [AdminController::class, 'users'])->name('admin.users');
+        Route::patch('/users/{user}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('admin.users.toggle');
+    });   
