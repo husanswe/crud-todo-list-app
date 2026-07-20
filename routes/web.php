@@ -15,11 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// Queue lesson
+Route::get('/tasks/import', [TaskController::class, 'showImport'])->name('tasks.import.show');
+Route::get('/tasks/import', [TaskController::class, 'import'])->name('tasls.import');
+
 Route::middleware('auth')->group(function () 
 {    
     Route::resource('tasks', TaskController::class);
 });
-
 /* Route::get('/test-raw', function() {
     $results = DB::select('SELECT * FROM tasks WHERE priority = ?', [2]);
     return $results;
@@ -86,8 +89,8 @@ Route::resource('categories', CategoryController::class);
 // Middleware lesson.
 Route::middleware(['auth', 'admin'])
     ->prefix('admin')
-    ->group(function () {
-    
+    ->group(function () 
+    {
         Route::get('/', [AdminController::class, 'dashboard'])->name('admin.dashboard');
         Route::get('users', [AdminController::class, 'users'])->name('admin.users');
         Route::patch('/users/{user}/toggle-admin', [AdminController::class, 'toggleAdmin'])->name('admin.users.toggle');

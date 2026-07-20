@@ -21,12 +21,11 @@ class ImportTasks implements ShouldQueue
             if(trim($title) === '') {
                 continue;
             }
-            
+
             Task::create([
                 'title' => $title,
                 'user_id' => $this->userId
             ]);
         }
-
     }
 }
