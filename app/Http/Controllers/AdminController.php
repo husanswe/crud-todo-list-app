@@ -12,8 +12,8 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view ('admin.dashboard', [
-            'userCount' => User::count(),
-            'taskCount' => Task::count(),
+            'usersCount' => User::count(),
+            'tasksCount' => Task::count(),
             'categoriesCount' => Category::count(),
         ]);
     }
