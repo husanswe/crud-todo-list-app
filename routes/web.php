@@ -15,18 +15,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Queue lesson
-Route::get('/tasks/import', [TaskController::class, 'showImport'])->name('tasks.import.show');
-Route::get('/tasks/import', [TaskController::class, 'import'])->name('tasks.import');
-
 Route::middleware('auth')->group(function () 
 {    
     Route::resource('tasks', TaskController::class);
+
+    // Queue lesson
+    Route::get('/tasks/import', [TaskController::class, 'showImport'])->name('tasks.import.show');
+    Route::post('/tasks/import', [TaskController::class, 'import'])->name('tasks.import');
 });
+
+
 /* Route::get('/test-raw', function() {
     $results = DB::select('SELECT * FROM tasks WHERE priority = ?', [2]);
     return $results;
 }); */
+
 
 Route::get('/test-transaction', function() {
     DB::transaction(function() {
