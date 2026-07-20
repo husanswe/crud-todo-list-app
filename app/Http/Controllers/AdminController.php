@@ -12,12 +12,14 @@ class AdminController extends Controller
     public function dashboard()
     {
         return view ('admin.dashboard', [
-            ''
+            'userCount' => User::count(),
+            'taskCount' => Task::count(),
+            'categoriesCount' => Category::count(),
         ]);
     }
 
     public function users()
     {
-        return view('admin.users');
+        return view('admin.users', ['users' => User::all()]);
     }
 }
