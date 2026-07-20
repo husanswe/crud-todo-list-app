@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 // Queue lesson
 Route::get('/tasks/import', [TaskController::class, 'showImport'])->name('tasks.import.show');
-Route::get('/tasks/import', [TaskController::class, 'import'])->name('tasls.import');
+Route::get('/tasks/import', [TaskController::class, 'import'])->name('tasks.import');
 
 Route::middleware('auth')->group(function () 
 {    
