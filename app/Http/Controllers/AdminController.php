@@ -25,7 +25,14 @@ class AdminController extends Controller
 
     public function toggleAdmin(User $user)
     {
-        $user->update([!$user->is_admin]);
-        return redirect()->route('admin.users')->with('success', 'You\'ve been promoted as an admin!');
+        $user->update([
+            'is_admin' => !$user->is_admin
+        ]);
+
+        $message = $user->is_admin
+            ? "{$user->name} has been promoted to admin!"
+            : "{$user->name}'s admin access has been revoked.";
+
+        return redirect()->route('admin.users')->with('success', $message);
     }
 }
