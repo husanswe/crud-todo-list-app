@@ -31,14 +31,12 @@
                 </span>
 
                 <div class="d-flex align-items-center gap-2">
-                    @auth
-                        @if (auth()->user()->is_admin)
-                            <a href="{{ route('admin.dashboard') }}">Admin Panel</a>
-                        @endif
-                    @endauth
+                    @if (auth()->user()->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="text-warning border border-warning rounded p-1.5">Admin Panel</a>
+                    @endif
                     <form action="{{ route('logout') }}" method="POST" class="d-inline">
                         @csrf
-                        <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
+                        <button type="submit" class="btn btn-outline-light btn-md">Logout</button>
                     </form>
                 </div>
             </nav>

@@ -22,4 +22,10 @@ class AdminController extends Controller
     {
         return view('admin.users', ['users' => User::all()]);
     }
+
+    public function toggleAdmin(User $user)
+    {
+        $user->update([!$user->is_admin]);
+        return redirect()->route('admin.users')->with('success', 'You\'ve been promoted as an admin!');
+    }
 }
