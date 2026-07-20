@@ -15,16 +15,18 @@ class ImportTasks implements ShouldQueue
         
     }
 
-    public function handle(string $job): void
+    public function handle(): void
     {
-        $this->job = $job;
-
         foreach($this->titles as $title) {
             if(trim($title) === '') {
                 continue;
             }
+            
+            Task::create([
+                'title' => $title,
+                'user_id' => $this->userId
+            ]);
         }
 
-        Task::create([$user_id = $this->userId]);
     }
 }
