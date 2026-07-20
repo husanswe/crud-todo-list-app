@@ -9,6 +9,7 @@ use App\Models\Task;
 use App\Models\Tag;
 use App\Events\TaskCreated;
 use App\Events\TaskUpdated;
+use App\Jobs\ImportTasks;
 
 class TaskController extends Controller
 {
@@ -93,5 +94,26 @@ class TaskController extends Controller
         $task->delete();
         
         return redirect()->route('tasks.index')->with('success', 'Task deleted!');
+    }
+
+    public function showImport()
+    {
+        return view('tasks.import');
+    }
+
+    public function import(Request $request)
+    {
+        $validated = $request->validate([
+            'tasks' => 'required|string'
+        ]);
+
+        $titles = array_filter(
+            array_map('trim', explode("\n", $validated['tasks']))
+        );
+
+        ImportTasks::dispatch($titles, auth()->id());
+
+        return redirect()->route('tasks.index') 
+            ->with('success', 'Import started! Tasks are being added in background.');
     }
 }
