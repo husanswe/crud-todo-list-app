@@ -17,11 +17,11 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () 
 {    
-    Route::resource('tasks', TaskController::class);
-
     // Queue lesson
     Route::get('/tasks/import', [TaskController::class, 'showImport'])->name('tasks.import.show');
     Route::post('/tasks/import', [TaskController::class, 'import'])->name('tasks.import');
+    
+    Route::resource('tasks', TaskController::class);
 });
 
 
