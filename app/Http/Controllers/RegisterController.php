@@ -15,20 +15,8 @@ class RegisterController extends Controller
         return view('register-form');
     }
 
-    public function register(Request $request) 
+    public function register(RegisterRequest $request) 
     {
         $validated = $request->validated();
-
-        $user = User::create([
-            'name' => $validated['name'],
-            'email' => $validated['email'],
-            'password' => Hash::make($request->password),
-        ]);
-
-        Mail::to($request->user())->send(new WelcomeMail($user));
-
-        auth()->login($user);
-
-        return redirect()->route('tasks.index')->with('success', 'Welcome! Your account is ready.');
     }
 }

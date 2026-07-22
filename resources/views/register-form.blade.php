@@ -52,7 +52,7 @@
         <h1>Validation Lesson Tasks — 5 tasks. Task 1 — Form with 5 validation rules</h1>
 
         <div class="container">
-            <form action="/register-form" method="POST" autocomplete="off">
+            <form action="{{ route('register.store') }}" method="POST" autocomplete="off">
                 @csrf
                 <label for="name">Name</label>
                 <input type="text" name="name" value="{{ old('name') }}">

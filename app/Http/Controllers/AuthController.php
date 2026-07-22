@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Mail;
 
 class AuthController extends Controller
 {
@@ -28,6 +30,8 @@ class AuthController extends Controller
             'email' => $validated['email'],
             'password' => Hash::make($validated['password'])
         ]);
+
+        Mail::to($user->email)->send(new WelcomeMail($user));
 
         Auth::login($user);
 

@@ -47,9 +47,6 @@ Route::get('/test-transaction', function() {
     return "Transaction completed";
 });
 
-Route::get('/register-form', [RegisterController::class, 'show']);
-Route::post('/register-form', [RegisterController::class, 'register']);
-
 // File upload and working w/ files lesson. Task 1
 Route::get('/upload', [UploadController::class, 'show']);
 Route::post('/upload', [UploadController::class, 'store']);
@@ -80,7 +77,8 @@ Route::get('/n-plus-1-demo', function()
 
 // Authentication Lesson. Task 1
 Route::get('/register', [AuthController::class, 'showRegister'])->name('showRegister');
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
